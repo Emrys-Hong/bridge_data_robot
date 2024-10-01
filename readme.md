@@ -24,7 +24,16 @@ pip install -e .
 cd /widowx_envs
 python widowx_env_service.py --client
 ```
+## Running Evaluation
 
+Set up Openvla environmet and follow the `for client` instructions to install required modules in the openvla env. Then run the following command to start the evaluation.
+
+```bash
+cd openvla
+python experiments/robot/bridge/run_bridgev2_eval.py \
+  --model_family openvla \
+  --pretrained_checkpoint openvla/openvla-7b
+```
 
 #### old in case useful
 ```
