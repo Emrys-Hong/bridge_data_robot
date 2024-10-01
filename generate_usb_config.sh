@@ -9,9 +9,10 @@ d435=""
 # Run v4l2-ctl to fetch devices and parse them line by line
 while IFS= read -r line; do
     # Check for the device identifiers and store them accordingly
+    echo $line
     if [[ $line == *"Piwebcam: UVC Camera"* ]]; then
         wrist=$(echo "$line" | awk -F '(' '{print $2}' | awk -F ')' '{print $1}')
-    elif [[ $line == *"HD Pro Webcam C920"* ]] && [ -z "$blue" ]; then
+elif [[ $line == *"Creative Live! Cam Sync V3"* ]] && [ -z "$blue" ]; then
         blue=$(echo "$line" | awk -F '(' '{print $2}' | awk -F ')' '{print $1}')
     elif [[ $line == *"HD Pro Webcam C920"* ]]; then
         yellow=$(echo "$line" | awk -F '(' '{print $2}' | awk -F ')' '{print $1}')

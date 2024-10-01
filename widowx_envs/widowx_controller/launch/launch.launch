@@ -13,5 +13,6 @@
     <include file="$(find multicam_server)/launch/cameras.launch">
         <arg name="video_stream_provider" value="$(arg video_stream_provider)" />
         <arg name="camera_connector_chart" value="$(arg camera_connector_chart)" />
+        <arg name="python_node" value="$(arg python_node)" />
     </include>
 </launch>

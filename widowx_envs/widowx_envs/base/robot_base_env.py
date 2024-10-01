@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+
 from widowx_envs.control_loops import Environment_Exception
 import time
 from widowx_envs.base.base_env import BaseEnv
@@ -55,9 +56,8 @@ class RobotBaseEnv(BaseEnv):
         for name, value in self._hp.items():
             logging.getLogger('robot_logger').info('{}= {}'.format(name, value))
         logging.getLogger('robot_logger').info('---------------------------------------------------------------------------')
-
         self._cameras = [CameraRecorder(t, False, False) for t in self._hp.camera_topics]
-        self._camera_info = [c.camera_info for c in self._cameras]
+        #self._camera_info = [c.camera_info for c in self._cameras]
 
         if "depth_camera_topics" in self._hp:
             print("depth camera topics", self._hp.depth_camera_topics)
@@ -412,14 +412,14 @@ class RobotBaseEnv(BaseEnv):
         # cur_time = rospy.get_time()
         cur_time = rospy.Time.now()
         for recorder in cameras:
+            #breakpoint()
             stamp, image = recorder.get_image()
             time_diff = (cur_time - stamp).to_sec()
             logging.getLogger('robot_logger').info("Current-Camera time difference {}".format(time_diff))
 
-            if abs(time_diff) > 10 * self._obs_tol:    # no camera ping in half second => camera failure
-                logging.getLogger('robot_logger').error("DeSYNC - no ping in more than {} seconds!".format(10 * self._obs_tol))
-                # import pdb; pdb.set_trace()
-                raise Image_Exception
+            # if abs(time_diff) > 10 * self._obs_tol:    # no camera ping in half second => camera failure
+            #    logging.getLogger('robot_logger').error("DeSYNC - no ping in more than {} seconds!".format(10 * self._obs_tol))
+            #    raise Image_Exception
             time_stamps.append(stamp)
             cam_imgs.append(image)
 

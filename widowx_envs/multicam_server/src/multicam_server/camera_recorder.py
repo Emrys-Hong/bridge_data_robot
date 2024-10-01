@@ -72,11 +72,12 @@ class CameraRecorder:
             self._camera_info_name= os.path.join(os.path.split(self._topic_name)[0], "camera_info")
         print("Trying to read camera info from ", self._camera_info_name)
 
-        self._camera_info = rospy.wait_for_message(self._camera_info_name, CameraInfo)
+        #self._camera_info = rospy.wait_for_message(self._camera_info_name, CameraInfo)
 
         print("Successfully read camera info")
 
 
+        #breakpoint()
         rospy.Subscriber(topic_data.name, Image_msg, self.store_latest_im)
         logger = logging.getLogger('robot_logger')
         logger.debug('downing sema on topic: {}'.format(topic_data.name))
