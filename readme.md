@@ -1,15 +1,15 @@
 ##  for server:
-###Setup:
+### Setup:
 1. sudo docker run -it --privileged --runtime=nvidia -p 5556:5556 --entrypoint bash -v /dev:/dev -v ~/Desktop/bridge_data_robot/usb_connector_chart.yml:/tmp/camera_connector_chart -v ~/Desktop/bridge_data_robot/widowx_envs:/home/robonet/widowx_envs robonet-base
 2. sudo pip install --upgrade scipy
 3. sudo apt install tmux
 
-###Starting Server:
+### Starting Server:
 1. roslaunch widowx_controller launch.launch python_node:=true realsense:=false camera_connector_chart:=/tmp/camera_connector_chart
 
 2. widowx_env_service --server
 
-##For Client:
+## For Client:
 ```bash
 git clone https://github.com/youliangtan/edgeml.git
 cd edgeml
