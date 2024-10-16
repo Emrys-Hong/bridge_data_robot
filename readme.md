@@ -1,6 +1,9 @@
 ##  for server:
 ### Setup:
-1. sudo docker run -it --privileged --runtime=nvidia -p 5556:5556 --entrypoint bash -v /dev:/dev -v ~/Desktop/bridge_data_robot/usb_connector_chart.yml:/tmp/camera_connector_chart -v ~/Desktop/bridge_data_robot/widowx_envs:/home/robonet/widowx_envs robonet-base
+1.
+```
+sudo docker run -it --privileged --runtime=nvidia -p 5556:5556 -p 5557:5557 --entrypoint bash -v /dev:/dev -v ~/Desktop/bridge_data_robot/usb_connector_chart.yml:/tmp/camera_connector_chart -v ~/Desktop/bridge_data_robot/widowx_envs:/home/robonet/widowx_envs robonet-base
+```
 2. sudo pip install --upgrade scipy
 3. sudo apt install tmux
 
