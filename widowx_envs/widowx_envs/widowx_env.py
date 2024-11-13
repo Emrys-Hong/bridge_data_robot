@@ -480,7 +480,7 @@ class BridgeDataRailRLPrivateWidowX(WidowXEnv):
         processed_images = np.stack([self._get_processed_image(im) for im in full_obs['images']], axis=0)
 
         obs = {'image': processed_images, 'state': self.get_full_state(),
-               'joints': full_obs['qpos'], 'env_done': full_obs['env_done'], 'full_obs': full_obs}
+               'joints': full_obs['qpos'], 'env_done': full_obs['env_done'], 'full_obs': full_obs, 'eef_transform': full_obs['eef_transform']}
         if full_obs['env_done']:
             obs['terminals'] = 1
         else:

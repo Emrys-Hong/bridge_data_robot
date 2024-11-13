@@ -177,6 +177,7 @@ class WidowXActionServer():
             obs = {
                 "image": obs["image"],
                 "state": obs["state"],
+                "eef_transform": obs['eef_transform'],
                 "full_image": mat_to_jpeg(obs["full_image"][0])  # faster
             }
         else:
@@ -344,6 +345,7 @@ def show_video(client, duration, full_image=True):
         cv2.waitKey(10)  # 10 ms
 
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--server', action='store_true')
@@ -428,6 +430,9 @@ def main():
 
         widowx_client.stop()
         print("Done all")
+
+
+
 
 
 if __name__ == '__main__':
